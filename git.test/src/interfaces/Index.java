@@ -1,43 +1,43 @@
 package interfaces;
 
 import javax.swing.*;
+
+import java.awt.BorderLayout;
+import java.awt.Color;
 import java.awt.FlowLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
+import jpanels.DrawCircleJPanel;
+
 public class Index extends JFrame implements ActionListener{
 
-	//Initialize buttons
-	private JButton btn1 = new JButton("Button1");
-	private JButton btn2 = new JButton("Button2");
-	private JButton btn3 = new JButton("Button3");
-	private JButton btn4 = new JButton("Button4");
+	//Initialize panel
+	private DrawCircleJPanel drawCircleJPanel = new DrawCircleJPanel();
 	
-	//Initialize label
-	private JLabel msgLabel = new JLabel();
+	//Initialize buttons
+	private JButton coordinatesButton = new JButton("New coordinates");
+	private JButton colorButton = new JButton("New color");
 	
 	//Constructor
 	public Index() {
 		super("Main window"); //Header for the window
-		this.setLayout(new FlowLayout()); //Window layout
+		
+		//JPanel for buttons	
+		JPanel buttonBar = new JPanel();
 		
 		//Add buttons and listeners for them
-		this.add(btn1);
-		btn1.addActionListener(this);
-		this.add(btn2);
-		btn2.addActionListener(this);
-		this.add(btn3);
-		btn3.addActionListener(this);
-		this.add(btn4);
-		btn4.addActionListener(this);
+		buttonBar.add(coordinatesButton);
+		coordinatesButton.addActionListener(this);
+		buttonBar.add(colorButton);
+		colorButton.addActionListener(this);
 		
-		this.add(msgLabel);
-		
-		//Window size
-		this.setSize(200, 200);
-		
+		//Add JPanels to JFrame
+		add(buttonBar, BorderLayout.NORTH);
+		add(drawCircleJPanel, BorderLayout.CENTER);
+			
 		//When window is closed the application closes
-		this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		setDefaultCloseOperation(EXIT_ON_CLOSE);
 	}
 	
 	@Override
@@ -45,26 +45,26 @@ public class Index extends JFrame implements ActionListener{
 		String command = evt.getActionCommand();
 		
 		//Handling the pressing of buttons
-		if(command.equals("Button1")) {
-			msgLabel.setText("Button1 pressed");
+		if(command.equals("New coordinates")) {
+			drawCircleJPanel.setNewCoordinates();
+			repaint();
 		}
 		
-		else if(command.equals("Button2")) {
-			msgLabel.setText("Button2 pressed");
+		else if(command.equals("New color")) {
+			drawCircleJPanel.setDrawingColor();
+			repaint();
 		}
-		
-		else if(command.equals("Button3")) {
-			msgLabel.setText("Button3 pressed");
-		}
-		
-		else if(command.equals("Button4")) {
-			msgLabel.setText("Button4 pressed");
-		}
-		
+
 	}
 	
 	public static void main(String[] args) {
 		Index indexWindow = new Index();
+		
+		//Window size
+		indexWindow.setSize(400, 200);
+		
+		//Disable resizing of the window
+		indexWindow.setResizable(false);
 		
 		//Make window visible
 		indexWindow.setVisible(true);
