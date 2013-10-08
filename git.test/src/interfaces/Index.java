@@ -7,6 +7,8 @@ import java.awt.Color;
 import java.awt.FlowLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.util.TimerTask;
+import java.util.Timer;
 
 import jpanels.DrawCircleJPanel;
 
@@ -15,9 +17,13 @@ public class Index extends JFrame implements ActionListener{
 	//Initialize panel
 	private DrawCircleJPanel drawCircleJPanel = new DrawCircleJPanel();
 	
+	//Timer
+	Timer timer = new Timer();
+	
 	//Initialize buttons
 	private JButton coordinatesButton = new JButton("New coordinates");
 	private JButton colorButton = new JButton("New color");
+	private JButton goHamButton = new JButton("GO HAM!");
 	
 	//Constructor
 	public Index() {
@@ -31,6 +37,8 @@ public class Index extends JFrame implements ActionListener{
 		coordinatesButton.addActionListener(this);
 		buttonBar.add(colorButton);
 		colorButton.addActionListener(this);
+		buttonBar.add(goHamButton);
+		goHamButton.addActionListener(this);
 		
 		//Add JPanels to JFrame
 		add(buttonBar, BorderLayout.NORTH);
@@ -46,13 +54,46 @@ public class Index extends JFrame implements ActionListener{
 		
 		//Handling the pressing of buttons
 		if(command.equals("New coordinates")) {
+			
+			//Timer is cancelled and purged when new button os pressed
+			timer.cancel();
+			timer.purge();
+			
 			drawCircleJPanel.setNewCoordinates();
 			repaint();
 		}
 		
 		else if(command.equals("New color")) {
+			
+			//Timer is cancelled and purged when new button os pressed
+			timer.cancel();
+			timer.purge();
 			drawCircleJPanel.setDrawingColor();
 			repaint();
+		}
+		
+		else if(command.equals("GO HAM!")) {
+			
+			//Timer is cancelled and purged when new button os pressed
+			timer.cancel();
+			timer.purge();
+			
+			//Reinitialize timer
+			timer = new Timer();
+			
+			//Timer runs in 200ms intervals and generates
+			//new coordinates and color for the drawing
+			timer.scheduleAtFixedRate(new TimerTask(){
+
+				@Override
+				public void run() {
+
+					drawCircleJPanel.setDrawingColor();
+					drawCircleJPanel.setNewCoordinates();
+					repaint();					
+				}
+				
+			},200, 200);
 		}
 
 	}
