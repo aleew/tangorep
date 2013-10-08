@@ -18,9 +18,15 @@ public class DrawCircleJPanel extends JPanel{
 		//White backround
 		setBackground(Color.white);
 		
-		drawColor = Color.green;
-		xCoordinate = 50;
-		yCoordinate = 50;
+		//Random color and coordinates for the initial drawing
+		Random rand = new Random();
+		float r = rand.nextFloat();
+		float g = rand.nextFloat();
+		float b = rand.nextFloat();
+		drawColor = new Color(r, g, b);
+		
+		xCoordinate = rand.nextInt(200) + 1;
+		yCoordinate = rand.nextInt(100) + 1;
 		
 	}
 	
