@@ -44,7 +44,7 @@ public class DrawCircleJPanel extends JPanel{
 		Random rand = new Random();
 		
 		//Random coordinates
-		xCoordinate = rand.nextInt(200) + 1;
+		xCoordinate = rand.nextInt(400) + 1;
 		yCoordinate = rand.nextInt(100) + 1;
 		
 	}

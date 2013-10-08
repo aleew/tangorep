@@ -125,7 +125,8 @@ public class Index extends JFrame implements ActionListener{
 
 					drawCircleJPanel.setDrawingColor();
 					drawCircleJPanel.setNewCoordinates();
-					repaint();					
+					repaint();
+					
 				}
 				
 			},200, 200);
