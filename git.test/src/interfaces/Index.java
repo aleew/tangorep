@@ -25,27 +25,47 @@ public class Index extends JFrame implements ActionListener{
 	private JButton colorButton = new JButton("New color");
 	private JButton goHamButton = new JButton("GO HAM!");
 	
+	JButton graphicsDemoButton;
+	
+	String choice = "";
+	
 	//Constructor
-	public Index() {
-		super("Main window"); //Header for the window
-		
-		//JPanel for buttons	
-		JPanel buttonBar = new JPanel();
-		
-		//Add buttons and listeners for them
-		buttonBar.add(coordinatesButton);
-		coordinatesButton.addActionListener(this);
-		buttonBar.add(colorButton);
-		colorButton.addActionListener(this);
-		buttonBar.add(goHamButton);
-		goHamButton.addActionListener(this);
-		
-		//Add JPanels to JFrame
-		add(buttonBar, BorderLayout.NORTH);
-		add(drawCircleJPanel, BorderLayout.CENTER);
+	public Index(String choice) {
+		if(choice.equals("")) {
+			this.setTitle("Main window");
 			
-		//When window is closed the application closes
-		setDefaultCloseOperation(EXIT_ON_CLOSE);
+			JPanel buttonBar = new JPanel();
+			graphicsDemoButton = new JButton("Graphics demo");
+			
+			buttonBar.add(graphicsDemoButton);
+			graphicsDemoButton.addActionListener(this);
+			
+			add(buttonBar, BorderLayout.NORTH);
+			
+			//Close application if main window is closed
+			setDefaultCloseOperation(EXIT_ON_CLOSE);
+				
+		}
+		
+		else if (choice.equals("Graphics demo")) {
+			this.setTitle("Graphics demo"); // Header for the window
+
+			// JPanel for buttons
+			JPanel buttonBar = new JPanel();
+
+			// Add buttons and listeners for them
+			buttonBar.add(coordinatesButton);
+			coordinatesButton.addActionListener(this);
+			buttonBar.add(colorButton);
+			colorButton.addActionListener(this);
+			buttonBar.add(goHamButton);
+			goHamButton.addActionListener(this);
+
+			// Add JPanels to JFrame
+			add(buttonBar, BorderLayout.NORTH);
+			add(drawCircleJPanel, BorderLayout.CENTER);
+
+		}
 	}
 	
 	@Override
@@ -53,7 +73,22 @@ public class Index extends JFrame implements ActionListener{
 		String command = evt.getActionCommand();
 		
 		//Handling the pressing of buttons
-		if(command.equals("New coordinates")) {
+		if(command.equals("Graphics demo")) {
+			choice = "Graphics demo";
+			
+			Index indexWindow = new Index(choice);
+			
+			//Window size
+			indexWindow.setSize(400, 200);
+			
+			//Disable resizing of the window
+			indexWindow.setResizable(false);
+			
+			//Make window visible
+			indexWindow.setVisible(true);
+		}
+		
+		else if(command.equals("New coordinates")) {
 			
 			//Timer is cancelled and purged when new button os pressed
 			timer.cancel();
@@ -99,7 +134,7 @@ public class Index extends JFrame implements ActionListener{
 	}
 	
 	public static void main(String[] args) {
-		Index indexWindow = new Index();
+		Index indexWindow = new Index("");
 		
 		//Window size
 		indexWindow.setSize(400, 200);
