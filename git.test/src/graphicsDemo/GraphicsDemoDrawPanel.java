@@ -15,7 +15,7 @@ public class GraphicsDemoDrawPanel extends JPanel{
 	
 	//Constructor
 	public GraphicsDemoDrawPanel() {
-		//White backround
+		//White background
 		setBackground(Color.white);
 		
 		//Random color and coordinates for the initial drawing

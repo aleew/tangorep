@@ -57,7 +57,7 @@ String command = evt.getActionCommand();
 		//Handling the pressing of buttons
 		if(command.equals("New coordinates")) {
 			
-			//Timer is cancelled and purged when new button os pressed
+			//Timer is cancelled and purged when new button is pressed
 			timer.cancel();
 			timer.purge();
 			
@@ -67,7 +67,7 @@ String command = evt.getActionCommand();
 		
 		else if(command.equals("New color")) {
 			
-			//Timer is cancelled and purged when new button os pressed
+			//Timer is cancelled and purged when new button is pressed
 			timer.cancel();
 			timer.purge();
 			graphicsDemoDrawPanel.setDrawingColor();
@@ -76,7 +76,7 @@ String command = evt.getActionCommand();
 		
 		else if(command.equals("GO HAM!")) {
 			
-			//Timer is cancelled and purged when new button os pressed
+			//Timer is cancelled and purged when new button is pressed
 			timer.cancel();
 			timer.purge();
 			

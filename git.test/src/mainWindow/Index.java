@@ -29,6 +29,10 @@ public class Index extends JFrame implements ActionListener{
 		graphicsDemoButton.addActionListener(this);
 		buttonBar.add(graphicsDemoButton);
 		
+		//Add new buttons here...
+		
+		
+		//JPanels to JFrame
 		add(welcomeText, BorderLayout.NORTH);
 		add(buttonBar, BorderLayout.CENTER);
 			
@@ -43,6 +47,9 @@ public class Index extends JFrame implements ActionListener{
 			GraphicsDemoMain graphicsDemo = new GraphicsDemoMain();
 			graphicsDemo.setVisible(true);
 		}
+		
+		//new button press handlers here
+		//else if...
 		
 	}
 	
