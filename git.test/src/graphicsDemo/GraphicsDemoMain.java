@@ -1,7 +1,5 @@
 package graphicsDemo;
 
-import interfaces.Index;
-
 import java.awt.BorderLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -52,7 +50,7 @@ public class GraphicsDemoMain extends JFrame implements ActionListener{
 	
 	@Override
 	public void actionPerformed(ActionEvent evt) {
-String command = evt.getActionCommand();
+		String command = evt.getActionCommand();
 		
 		//Handling the pressing of buttons
 		if(command.equals("New coordinates")) {

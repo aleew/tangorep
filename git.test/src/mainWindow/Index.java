@@ -21,7 +21,7 @@ public class Index extends JFrame implements ActionListener{
 		JPanel buttonBar = new JPanel();
 		
 		//Header for the window
-		JLabel welcomeLabel = new JLabel("Live or Don't...Make Your Choice");
+		JLabel welcomeLabel = new JLabel("Live or Die...Make Your Choice");
 		welcomeText.add(welcomeLabel);
 		
 		//Buttons
