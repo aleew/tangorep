@@ -45,8 +45,6 @@ public class GraphicsDemoMain extends JFrame implements ActionListener{
 		this.setSize(400, 200);
 		
 		this.setResizable(false);
-		
-		this.setVisible(true);
 	}
 	
 	
