@@ -3,6 +3,8 @@ package graphicsDemo;
 import java.awt.BorderLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.event.MouseEvent;
+import java.awt.event.MouseListener;
 import java.util.Timer;
 import java.util.TimerTask;
 
@@ -11,11 +13,11 @@ import javax.swing.JFrame;
 import javax.swing.JPanel;
 
 
-public class GraphicsDemoMain extends JFrame implements ActionListener{
+public class GraphicsDemoMain extends JFrame implements ActionListener, MouseListener{
 
 	// Initialize panel
 	private GraphicsDemoDrawPanel graphicsDemoDrawPanel = new GraphicsDemoDrawPanel();
-
+	
 	// Timer
 	Timer timer = new Timer();
 
@@ -26,6 +28,9 @@ public class GraphicsDemoMain extends JFrame implements ActionListener{
 	
 	public GraphicsDemoMain() {
 		super.setTitle("Graphics demo");
+		
+		//Add mouse listener for the panel
+		graphicsDemoDrawPanel.addMouseListener(this);
 		
 		// JPanel for buttons
 		JPanel buttonBar = new JPanel();
@@ -98,6 +103,75 @@ public class GraphicsDemoMain extends JFrame implements ActionListener{
 				
 			},200, 200);
 		}
+		
+	}
+
+
+	@Override
+	public void mouseClicked(MouseEvent arg0) {
+		
+		timer.cancel();
+		timer.purge();
+		
+		int x, y;
+		
+		//Get coordinates where mouse was clicked
+		x = arg0.getX();
+		y = arg0.getY();
+		
+		//System.out.println("x: " + x + " y: " + y);
+		
+		//set new coordinates for the ball and repaint
+		graphicsDemoDrawPanel.setNewCoordinatesWithMouse(x, y);
+		repaint();
+		
+	}
+
+
+	@Override
+	public void mouseEntered(MouseEvent arg0) {
+		// TODO Auto-generated method stub
+		
+	}
+
+
+	@Override
+	public void mouseExited(MouseEvent arg0) {
+		// TODO Auto-generated method stub
+		
+	}
+
+
+	@Override
+	public void mousePressed(MouseEvent arg0) {
+		
+		timer.cancel();
+		timer.purge();
+		
+		//Reinitialize timer
+		timer = new Timer();
+		
+		//Timer runs in 100ms intervals and generates
+		//random colors for the oval while mouse is pressed down
+		timer.scheduleAtFixedRate(new TimerTask(){
+
+			@Override
+			public void run() {
+
+				graphicsDemoDrawPanel.setDrawingColor();
+				//graphicsDemoDrawPanel.setNewCoordinates();
+				repaint();
+				
+			}
+			
+		},100, 100);
+		
+	}
+
+
+	@Override
+	public void mouseReleased(MouseEvent arg0) {
+		// TODO Auto-generated method stub
 		
 	}
 

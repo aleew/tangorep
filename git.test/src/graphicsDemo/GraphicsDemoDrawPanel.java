@@ -62,4 +62,23 @@ public class GraphicsDemoDrawPanel extends JPanel{
 		drawColor = new Color(r, g, b);
 		
 	}
+	
+	//Used for giving new coordinates for the oval with mouse click
+	public void setNewCoordinatesWithMouse(int x, int y) {
+			
+		//Mouse coordinates
+		xCoordinate = x;
+		yCoordinate = y;
+		
+		//new random color
+		Random rand = new Random();
+		float r = rand.nextFloat();
+		float g = rand.nextFloat();
+		float b = rand.nextFloat();
+		
+		drawColor = new Color(r, g, b);
+		
+	}
+	
+	
 }
