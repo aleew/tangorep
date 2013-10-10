@@ -28,6 +28,7 @@ public class GraphicsDemoDrawPanel extends JPanel{
 		xCoordinate = rand.nextInt(350) + 1;
 		yCoordinate = rand.nextInt(100) + 1;
 		
+	
 	}
 	
 	public void paintComponent(Graphics g) {
