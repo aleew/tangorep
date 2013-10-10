@@ -9,6 +9,7 @@ import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 
+import aleew.HelloWorld;
 import graphicsDemo.GraphicsDemoMain;
 
 public class Index extends JFrame implements ActionListener{
@@ -31,6 +32,9 @@ public class Index extends JFrame implements ActionListener{
 		
 		//Add new buttons here...
 		
+		JButton helloWorld = new JButton("Hello world!");
+		helloWorld.addActionListener(this);
+		buttonBar.add(helloWorld);
 		
 		//JPanels to JFrame
 		add(welcomeText, BorderLayout.NORTH);
@@ -52,6 +56,11 @@ public class Index extends JFrame implements ActionListener{
 		
 		//new button press handlers here
 		//else if...
+		else if(command.equals("Hello world!")) {
+			HelloWorld hello = new HelloWorld();
+			hello.setVisible(true);
+		}
+		
 		
 		//here
 	}
