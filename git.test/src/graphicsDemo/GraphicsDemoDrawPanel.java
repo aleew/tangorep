@@ -25,7 +25,7 @@ public class GraphicsDemoDrawPanel extends JPanel{
 		float b = rand.nextFloat();
 		drawColor = new Color(r, g, b);
 		
-		xCoordinate = rand.nextInt(200) + 1;
+		xCoordinate = rand.nextInt(350) + 1;
 		yCoordinate = rand.nextInt(100) + 1;
 		
 	}
@@ -45,7 +45,7 @@ public class GraphicsDemoDrawPanel extends JPanel{
 		Random rand = new Random();
 		
 		//Random coordinates
-		xCoordinate = rand.nextInt(400) + 1;
+		xCoordinate = rand.nextInt(350) + 1;
 		yCoordinate = rand.nextInt(100) + 1;
 		
 	}
