@@ -45,7 +45,7 @@ public class Index extends JFrame implements ActionListener{
 		//Code for the button presses
 		if(command.equals("Graphics demo")) {
 			GraphicsDemoMain graphicsDemo = new GraphicsDemoMain();
-			graphicsDemo.setVisible(true);
+			//graphicsDemo.setVisible(true);
 		}
 		
 		//new button press handlers here

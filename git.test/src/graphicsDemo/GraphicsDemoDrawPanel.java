@@ -37,6 +37,7 @@ public class GraphicsDemoDrawPanel extends JPanel{
 		g.setColor(drawColor);
 		g.drawOval(xCoordinate, yCoordinate, 10, 10);
 		g.fillOval(xCoordinate, yCoordinate, 10, 10);
+		
 	}
 	
 	//When called new coordinates for the oval are generated
