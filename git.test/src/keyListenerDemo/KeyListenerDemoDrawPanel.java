@@ -15,6 +15,11 @@ public class KeyListenerDemoDrawPanel extends JPanel{
 	
 	Color drawColor;
 	
+	int foodX;
+	int foodY;
+	
+	int laskuri = 0;
+	
 	//Constructor
 	public KeyListenerDemoDrawPanel() {
 		//White background
@@ -29,6 +34,30 @@ public class KeyListenerDemoDrawPanel extends JPanel{
 		
 		xCoordinate = 100;
 		yCoordinate = 100;
+		
+		foodX = rand.nextInt(150) + 1;
+		while(foodX >= 150 || foodX <= 50) {
+			foodX = rand.nextInt(150) + 1;
+		}
+		
+		foodY = rand.nextInt(150) + 1;
+		while(foodY >= 150 || foodY <= 50) {
+			foodY = rand.nextInt(150) + 1;
+		}
+		
+		if(xCoordinate == foodX && yCoordinate == foodY) {
+			System.out.println("syöty");
+			
+			foodX = rand.nextInt(150) + 1;
+			while(foodX >= 150 || foodX <= 50) {
+				foodX = rand.nextInt(150) + 1;
+			}
+			
+			foodY = rand.nextInt(150) + 1;
+			while(foodY >= 150 || foodY <= 50) {
+				foodY = rand.nextInt(150) + 1;
+			}
+		}
 		
 	
 	}
@@ -49,9 +78,17 @@ public class KeyListenerDemoDrawPanel extends JPanel{
 		g.drawLine(50, 160, 160, 160);
 		g.drawLine(160, 50, 160, 160);
 		
+		Random rand = new Random();
+		
+		g.drawOval(foodX, foodY, 5, 5);
+		g.fillOval(foodX, foodY, 5, 5);
+		
+		
 	}
 	
 	public void setNewCoordinates(KeyEvent e) {
+		
+		Random rand = new Random();
 		
 		//Handling of the arrow key presses
 		//Move ball to the direction of the arrow and kkep the ball inside
@@ -82,6 +119,20 @@ public class KeyListenerDemoDrawPanel extends JPanel{
 			if(xCoordinate < 150)
 				xCoordinate = xCoordinate + 1;
 			
+		}
+		
+		if(xCoordinate == foodX && yCoordinate == foodY) {
+			foodX = rand.nextInt(150) + 1;
+			while(foodX >= 150 || foodX <= 50) {
+				foodX = rand.nextInt(150) + 1;
+			}
+		
+			foodY = rand.nextInt(150) + 1;
+			while(foodY >= 150 || foodY <= 50) {
+				foodY = rand.nextInt(150) + 1;
+			}
+			laskuri++;
+			System.out.println("" + laskuri);
 		}
 	}
 
