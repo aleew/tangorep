@@ -11,6 +11,7 @@ import javax.swing.JPanel;
 
 import aleew.HelloWorld;
 import graphicsDemo.GraphicsDemoMain;
+import keyListenerDemo.KeyListenerDemoMain;
 
 public class Index extends JFrame implements ActionListener{
 
@@ -26,15 +27,23 @@ public class Index extends JFrame implements ActionListener{
 		welcomeText.add(welcomeLabel);
 		
 		//Buttons
+		
+		//Graphics demo
 		JButton graphicsDemoButton = new JButton("Graphics demo");
 		graphicsDemoButton.addActionListener(this);
 		buttonBar.add(graphicsDemoButton);
 		
-		//Add new buttons here...
-		
+		//Hello world
 		JButton helloWorld = new JButton("Hello world!");
 		helloWorld.addActionListener(this);
 		buttonBar.add(helloWorld);
+		
+		//KeyListener demo
+		JButton keyListenerDemo = new JButton("KeyListener demo");
+		keyListenerDemo.addActionListener(this);
+		buttonBar.add(keyListenerDemo);
+		
+		//Add new buttons here...
 		
 		//JPanels to JFrame
 		add(welcomeText, BorderLayout.NORTH);
@@ -46,7 +55,7 @@ public class Index extends JFrame implements ActionListener{
 	public void actionPerformed(ActionEvent evt) {
 		String command = evt.getActionCommand();
 		
-		//Code for the button presses
+		//Graphics demo button is pressed
 		if(command.equals("Graphics demo")) {
 			GraphicsDemoMain graphicsDemo = new GraphicsDemoMain();
 			//graphicsDemo.setVisible(true);
@@ -54,15 +63,20 @@ public class Index extends JFrame implements ActionListener{
 			
 		}
 		
-		//new button press handlers here
-		//else if...
+		//Hello world button is pressed
 		else if(command.equals("Hello world!")) {
 			HelloWorld hello = new HelloWorld();
 			hello.setVisible(true);
 		}
 		
+		else if(command.equals("KeyListener demo")) {
+			KeyListenerDemoMain keyListenerDemoMain = new KeyListenerDemoMain();
+		}
 		
-		//here
+		//new button press handlers here
+		//else if...
+		
+		
 	}
 	
 	public static void main(String[] args) {

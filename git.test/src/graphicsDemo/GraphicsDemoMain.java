@@ -3,6 +3,8 @@ package graphicsDemo;
 import java.awt.BorderLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.event.KeyEvent;
+import java.awt.event.KeyListener;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 import java.util.Timer;
@@ -31,7 +33,7 @@ public class GraphicsDemoMain extends JFrame implements ActionListener, MouseLis
 		
 		//Add mouse listener for the panel
 		graphicsDemoDrawPanel.addMouseListener(this);
-		
+			
 		// JPanel for buttons
 		JPanel buttonBar = new JPanel();
 
@@ -43,6 +45,7 @@ public class GraphicsDemoMain extends JFrame implements ActionListener, MouseLis
 		buttonBar.add(goHamButton);
 		goHamButton.addActionListener(this);
 
+		
 		// Add JPanels to JFrame
 		add(buttonBar, BorderLayout.NORTH);
 		add(graphicsDemoDrawPanel, BorderLayout.CENTER);
@@ -54,7 +57,7 @@ public class GraphicsDemoMain extends JFrame implements ActionListener, MouseLis
 		this.setVisible(true);
 	}
 	
-	
+
 	@Override
 	public void actionPerformed(ActionEvent evt) {
 		String command = evt.getActionCommand();
