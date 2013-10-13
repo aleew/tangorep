@@ -2,6 +2,7 @@ package keyListenerDemo;
 
 import java.awt.Color;
 import java.awt.Graphics;
+import java.awt.Rectangle;
 import java.awt.event.KeyEvent;
 import java.util.Random;
 
@@ -12,11 +13,14 @@ public class KeyListenerDemoDrawPanel extends JPanel{
 	
 	int xCoordinate;
 	int yCoordinate;
+	Rectangle ball;
+	
 	
 	Color drawColor;
 	
 	int foodX;
 	int foodY;
+	Rectangle food;
 	
 	int laskuri = 0;
 	
@@ -35,6 +39,8 @@ public class KeyListenerDemoDrawPanel extends JPanel{
 		xCoordinate = 100;
 		yCoordinate = 100;
 		
+		ball = new Rectangle(xCoordinate, yCoordinate, 10, 10);
+		
 		foodX = rand.nextInt(150) + 1;
 		while(foodX >= 150 || foodX <= 50) {
 			foodX = rand.nextInt(150) + 1;
@@ -44,9 +50,16 @@ public class KeyListenerDemoDrawPanel extends JPanel{
 		while(foodY >= 150 || foodY <= 50) {
 			foodY = rand.nextInt(150) + 1;
 		}
+		food = new Rectangle(foodX, foodY, 5, 5);
 		
+		if(ball.intersects(food)) {
+			System.out.println("kohtaus");
+		}
+		
+		if(ball.intersects(food)) {
+			System.out.println("intersection");
+		}
 		if(xCoordinate == foodX && yCoordinate == foodY) {
-			System.out.println("syöty");
 			
 			foodX = rand.nextInt(150) + 1;
 			while(foodX >= 150 || foodX <= 50) {
@@ -62,7 +75,6 @@ public class KeyListenerDemoDrawPanel extends JPanel{
 	
 	}
 	
-	
 	public void paintComponent(Graphics g) {
 		super.paintComponents(g);
 	
@@ -70,7 +82,7 @@ public class KeyListenerDemoDrawPanel extends JPanel{
 		g.setColor(drawColor);
 		g.drawOval(xCoordinate, yCoordinate, 10, 10);
 		g.fillOval(xCoordinate, yCoordinate, 10, 10);
-		
+		ball = new Rectangle(xCoordinate, yCoordinate, 10, 10);
 		
 		//Draw a box which shows bounds for the ball
 		g.drawLine(50, 50, 160, 50);
@@ -82,8 +94,8 @@ public class KeyListenerDemoDrawPanel extends JPanel{
 		
 		g.drawOval(foodX, foodY, 5, 5);
 		g.fillOval(foodX, foodY, 5, 5);
-		
-		
+		food = new Rectangle(foodX, foodY, 5, 5);
+			
 	}
 	
 	public void setNewCoordinates(KeyEvent e) {
@@ -120,8 +132,8 @@ public class KeyListenerDemoDrawPanel extends JPanel{
 				xCoordinate = xCoordinate + 1;
 			
 		}
-		
-		if(xCoordinate == foodX && yCoordinate == foodY) {
+		if(ball.intersects(food)) {
+		//if(xCoordinate == foodX && yCoordinate == foodY) {
 			foodX = rand.nextInt(150) + 1;
 			while(foodX >= 150 || foodX <= 50) {
 				foodX = rand.nextInt(150) + 1;
@@ -134,6 +146,8 @@ public class KeyListenerDemoDrawPanel extends JPanel{
 			laskuri++;
 			System.out.println("" + laskuri);
 		}
+		
+		
 	}
 
 }

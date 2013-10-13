@@ -17,7 +17,6 @@ import graphicsDemo.*;
 public class KeyListenerDemoMain extends JFrame implements KeyListener{
 
 	KeyListenerDemoDrawPanel drawPanel = new KeyListenerDemoDrawPanel();
-	//GraphicsDemoDrawPanel drawPanel = new GraphicsDemoDrawPanel();
 	
 	public KeyListenerDemoMain() {
 		super.setTitle("KeyListener demo");

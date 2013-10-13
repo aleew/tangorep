@@ -51,7 +51,7 @@ public class Index extends JFrame implements ActionListener{
 		add(welcomeText, BorderLayout.NORTH);
 		add(buttonBar, BorderLayout.CENTER);
 
-		//To ways to set the location for the window
+		//Two ways to set the location for the window
 		/*
 		Dimension dimension = Toolkit.getDefaultToolkit().getScreenSize();
 	    int x = (int) ((dimension.getWidth() - this.getWidth()) / 2);
@@ -60,6 +60,7 @@ public class Index extends JFrame implements ActionListener{
 		
 	    //setLocationRelativeTo(null);
 		*/	
+		
 	}
 	
 	@Override
