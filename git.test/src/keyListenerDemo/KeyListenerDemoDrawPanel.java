@@ -14,8 +14,7 @@ public class KeyListenerDemoDrawPanel extends JPanel{
 	int xCoordinate;
 	int yCoordinate;
 	Rectangle ball;
-	
-	
+		
 	Color drawColor;
 	
 	int foodX;
@@ -51,14 +50,7 @@ public class KeyListenerDemoDrawPanel extends JPanel{
 			foodY = rand.nextInt(150) + 1;
 		}
 		food = new Rectangle(foodX, foodY, 5, 5);
-		
-		if(ball.intersects(food)) {
-			System.out.println("kohtaus");
-		}
-		
-		if(ball.intersects(food)) {
-			System.out.println("intersection");
-		}
+			
 		if(xCoordinate == foodX && yCoordinate == foodY) {
 			
 			foodX = rand.nextInt(150) + 1;
@@ -82,7 +74,8 @@ public class KeyListenerDemoDrawPanel extends JPanel{
 		g.setColor(drawColor);
 		g.drawOval(xCoordinate, yCoordinate, 10, 10);
 		g.fillOval(xCoordinate, yCoordinate, 10, 10);
-		ball = new Rectangle(xCoordinate, yCoordinate, 10, 10);
+		//ball = new Rectangle(xCoordinate, yCoordinate, 10, 10);
+		ball.setLocation(xCoordinate, yCoordinate);
 		
 		//Draw a box which shows bounds for the ball
 		g.drawLine(50, 50, 160, 50);
@@ -94,8 +87,8 @@ public class KeyListenerDemoDrawPanel extends JPanel{
 		
 		g.drawOval(foodX, foodY, 5, 5);
 		g.fillOval(foodX, foodY, 5, 5);
-		food = new Rectangle(foodX, foodY, 5, 5);
-			
+		//food = new Rectangle(foodX, foodY, 5, 5);
+		food.setLocation(foodX, foodY);	
 	}
 	
 	public void setNewCoordinates(KeyEvent e) {
@@ -145,6 +138,9 @@ public class KeyListenerDemoDrawPanel extends JPanel{
 			}
 			laskuri++;
 			System.out.println("" + laskuri);
+			
+					
+					
 		}
 		
 		

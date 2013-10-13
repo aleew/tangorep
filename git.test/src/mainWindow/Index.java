@@ -1,6 +1,7 @@
 package mainWindow;
 
 import java.awt.BorderLayout;
+import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.Toolkit;
 import java.awt.event.ActionEvent;
@@ -47,10 +48,13 @@ public class Index extends JFrame implements ActionListener{
 		
 		//Add new buttons here...
 		
+		welcomeText.setOpaque(false);
+		buttonBar.setOpaque(false);
+		
 		//JPanels to JFrame
 		add(welcomeText, BorderLayout.NORTH);
 		add(buttonBar, BorderLayout.CENTER);
-
+		
 		//Two ways to set the location for the window
 		/*
 		Dimension dimension = Toolkit.getDefaultToolkit().getScreenSize();
@@ -104,6 +108,8 @@ public class Index extends JFrame implements ActionListener{
 		//Close application if this window is closed
 		mainWindow.setDefaultCloseOperation(EXIT_ON_CLOSE);
 		
+		//mainWindow.setUndecorated(true);
+			
 		//Set window visible
 		mainWindow.setVisible(true);
 		
