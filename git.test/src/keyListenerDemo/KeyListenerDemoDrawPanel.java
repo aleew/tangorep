@@ -142,8 +142,56 @@ public class KeyListenerDemoDrawPanel extends JPanel{
 					
 					
 		}
+			
+	}
+	
+	public void setDirection(KeyEvent e) {
 		
+		Random rand = new Random();
 		
+		if(e.getKeyCode() == KeyEvent.VK_UP) {
+			//System.out.println("up");
+			if(yCoordinate > 50)
+				yCoordinate = yCoordinate - 1;
+			
+		}
+		
+		else if(e.getKeyCode() == KeyEvent.VK_DOWN) {
+			//System.out.println("down");
+			if(yCoordinate < 150)
+				yCoordinate = yCoordinate + 1;
+			
+		}
+		
+		else if(e.getKeyCode() == KeyEvent.VK_LEFT) {
+			//System.out.println("left");
+			if(xCoordinate > 50)
+				xCoordinate = xCoordinate - 1;
+			
+		}
+		
+		else if(e.getKeyCode() == KeyEvent.VK_RIGHT) {
+			//System.out.println("right");
+			if(xCoordinate < 150)
+				xCoordinate = xCoordinate + 1;
+			
+		}
+		
+		if(ball.intersects(food)) {
+			//if(xCoordinate == foodX && yCoordinate == foodY) {
+				foodX = rand.nextInt(150) + 1;
+				while(foodX >= 150 || foodX <= 50) {
+					foodX = rand.nextInt(150) + 1;
+				}
+			
+				foodY = rand.nextInt(150) + 1;
+				while(foodY >= 150 || foodY <= 50) {
+					foodY = rand.nextInt(150) + 1;
+				}
+				laskuri++;
+				System.out.println("" + laskuri);
+							
+			}
 	}
 
 }

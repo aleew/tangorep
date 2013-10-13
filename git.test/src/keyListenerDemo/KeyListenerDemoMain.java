@@ -7,15 +7,18 @@ import java.awt.Graphics;
 import java.awt.event.ActionEvent;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
+import java.util.Timer;
+import java.util.TimerTask;
 
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 
-import graphicsDemo.*;
-
 public class KeyListenerDemoMain extends JFrame implements KeyListener{
 
+	Timer timer = new Timer();
+	KeyEvent key;
+	
 	KeyListenerDemoDrawPanel drawPanel = new KeyListenerDemoDrawPanel();
 	
 	public KeyListenerDemoMain() {
@@ -41,10 +44,29 @@ public class KeyListenerDemoMain extends JFrame implements KeyListener{
 
 	@Override
 	public void keyPressed(KeyEvent e) {
+		
+		timer.cancel();
+		timer.purge();
+		key = e;
+		
+		timer = new Timer();
+		
+		//Set new coordinates with keys
+		//drawPanel.setNewCoordinates(e);
+		
+		//Set the move direction of ball with keys 
+		timer.scheduleAtFixedRate(new TimerTask(){
+
+			@Override
+			public void run() {
+
+				drawPanel.setDirection(key);			
+				repaint();
+				
+			}
 			
-		//Call the setting of new coordinates and repaint
-		drawPanel.setNewCoordinates(e);
-		repaint();
+		},50, 50);
+		
 		
 	}
 
