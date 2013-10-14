@@ -16,6 +16,7 @@ import javax.swing.JPanel;
 import aleew.HelloWorld;
 import graphicsDemo.GraphicsDemoMain;
 import keyListenerDemo.KeyListenerDemoMain;
+import invokerGame.InvokerGameMain;
 
 public class Index extends JFrame implements ActionListener{
 
@@ -46,6 +47,10 @@ public class Index extends JFrame implements ActionListener{
 		JButton keyListenerDemo = new JButton("KeyListener demo");
 		keyListenerDemo.addActionListener(this);
 		buttonBar.add(keyListenerDemo);
+		
+		JButton invokerGame = new JButton("Invoker game");
+		invokerGame.addActionListener(this);
+		buttonBar.add(invokerGame);
 		
 		//Add new buttons here...
 		
@@ -88,6 +93,10 @@ public class Index extends JFrame implements ActionListener{
 		
 		else if(command.equals("KeyListener demo")) {
 			KeyListenerDemoMain keyListenerDemoMain = new KeyListenerDemoMain();
+		}
+		
+		else if(command.equals("Invoker game")) {
+			InvokerGameMain invokerGame = new InvokerGameMain();
 		}
 		
 		//new button press handlers here
