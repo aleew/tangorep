@@ -11,15 +11,11 @@ import javax.swing.JFrame;
 
 public class InvokerGameFrame extends JFrame implements ActionListener, KeyListener{
 
-	JButton playButton;
 	
 	public InvokerGameFrame() {
 		super.setTitle("Invoker game");
-		
-		playButton = new JButton("Play!");
-		playButton.addActionListener(this);
-		
-		this.add(playButton);
+
+		addKeyListener(this);
 		
 		this.setResizable(false);
 		
@@ -27,19 +23,14 @@ public class InvokerGameFrame extends JFrame implements ActionListener, KeyListe
 		
 		this.setVisible(true);
 		
-		
+			
 	}
 	
 	public void addNotify() {
 		super.addNotify();
 		requestFocus();
 	}
-	
-	public void setStartGame() {
-		validate();
-		repaint();
-	}
-	
+
 	@Override
 	public void keyPressed(KeyEvent arg0) {
 		// TODO Auto-generated method stub
@@ -53,8 +44,8 @@ public class InvokerGameFrame extends JFrame implements ActionListener, KeyListe
 	}
 
 	@Override
-	public void keyTyped(KeyEvent arg0) {
-		// TODO Auto-generated method stub
+	public void keyTyped(KeyEvent evt) {
+		
 		
 	}
 
@@ -62,11 +53,7 @@ public class InvokerGameFrame extends JFrame implements ActionListener, KeyListe
 	public void actionPerformed(ActionEvent evt) {
 		String command = evt.getActionCommand();
 		
-		if(command.equals("Play!")) {
-			remove(playButton);
-			setStartGame();
-		}
-		
+	
 	}
 
 }
