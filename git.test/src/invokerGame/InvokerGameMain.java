@@ -8,12 +8,14 @@ import java.awt.event.KeyListener;
 import java.util.ArrayList;
 
 import javax.swing.JButton;
+import javax.swing.JPanel;
 
 public class InvokerGameMain implements ActionListener, KeyListener{
 
 	InvokerGameFrame invokerGameFrame;
 	JButton playButton;
 	InvokerGamePlayPanel invokerGamePlayPanel;
+	JPanel playButtonPanel;
 	
 	InvokerGameAddSpells invokerGameAddSpells = new InvokerGameAddSpells();
 	
@@ -22,12 +24,16 @@ public class InvokerGameMain implements ActionListener, KeyListener{
 	public InvokerGameMain() {
 		invokerGameFrame = new InvokerGameFrame();
 		
-		invokerGameFrame.setLayout(new GridBagLayout());
+		//invokerGameFrame.setLayout(new GridBagLayout());
+		
+		playButtonPanel = new JPanel();
+		playButtonPanel.setLayout(new GridBagLayout());
 		
 		playButton = new JButton("Play!");
 		playButton.addActionListener(this);
 		
-		invokerGameFrame.add(playButton);
+		playButtonPanel.add(playButton);
+		invokerGameFrame.add(playButtonPanel);
 		
 		
 		spells = invokerGameAddSpells.getSpells();
@@ -41,6 +47,8 @@ public class InvokerGameMain implements ActionListener, KeyListener{
 		if(command.equals("Play!")) {
 			//Remove starting screen
 			invokerGameFrame.remove(playButton);
+			invokerGameFrame.remove(playButtonPanel);
+			
 			
 			//Add listener for keys
 			invokerGameFrame.addKeyListener(this);
@@ -53,6 +61,7 @@ public class InvokerGameMain implements ActionListener, KeyListener{
 			//Paint new components
 			invokerGameFrame.validate();
 			invokerGameFrame.repaint();
+			
 		}
 		
 	}
@@ -68,7 +77,6 @@ public class InvokerGameMain implements ActionListener, KeyListener{
 		
 		//Get key char, convert to string and make it lowercase for easier comparison
 		String key = Character.toString(evt.getKeyChar()).toLowerCase();
-		//System.out.println(key);
 		
 		//For 3 orbs
 		if(key.equals("q")) {
